@@ -46,7 +46,6 @@ function setGameElements() {
         newGameBtn.innerText = 'Jeszcze raz';
       break;
     case 'notStarted':
-    default:
         newGameElem.style.display = 'block';
         pickElem.style.display = 'none';
         resultsElem.style.display = 'none';
@@ -67,8 +66,6 @@ function newGame() {
     setGameElements();
 
     playerNameElem.innerHTML = player.name;
-
-    setGamePoints();
 
     }
 }
@@ -101,6 +98,8 @@ function playerPick(playerPick) {
   computerPickElem.innerHTML = computerPick;
 
   checkRoundWinner (playerPick, computerPick);
+
+  setGamePoints();
 }
 
 // logika gry
@@ -133,6 +132,4 @@ function checkRoundWinner(playerPick, computerPick) {
 function setGamePoints() {
     playerPointsElem.innerHTML = player.score;
     computerPointsElem.innerHTML = computer.score;
-
-    console.log();
 }
