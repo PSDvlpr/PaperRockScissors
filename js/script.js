@@ -53,4 +53,21 @@ function setGameElements() {
   }
 }
 
-setGameElements();
+// rozpoczęcie gry //
+
+var playerPointsElem = document.getElementById('js-playerPoints'),
+    playerNameElem = document.getElementById('js-playerName'),
+    computerPointsElem = document.getElementById('js-computerPoints');
+
+function newGame() {
+  player.name = prompt('Wprowadź imię', 'imię gracza');
+  if (player.name) {
+    player.score = computer.score = 0;
+    gameState = 'started';
+    setGameElements();
+
+    playerNameElem.innerHTML = player.name;
+    // setGamePoints(); // Jeszcze nie mamy tej funkcji
+    
+    }
+}
