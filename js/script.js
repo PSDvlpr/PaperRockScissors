@@ -35,6 +35,8 @@ var newGameElem = document.getElementById('js-newGameElement'),
 
 // statusy gry //
 
+// statusy gry //
+
 function setGameElements() {
   switch(gameState) {
     case 'started':
@@ -46,6 +48,7 @@ function setGameElements() {
         newGameBtn.innerText = 'Jeszcze raz';
       break;
     case 'notStarted':
+    default:
         newGameElem.style.display = 'block';
         pickElem.style.display = 'none';
         resultsElem.style.display = 'none';
