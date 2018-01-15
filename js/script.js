@@ -55,6 +55,8 @@ function setGameElements() {
   }
 }
 
+setGameElements('notStarted');
+
 // rozpoczęcie gry //
 
 var playerPointsElem = document.getElementById('js-playerPoints'),
