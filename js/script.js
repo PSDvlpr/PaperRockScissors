@@ -31,7 +31,9 @@ var gameState = 'notStarted',  //started // ended
 
 var newGameElem = document.getElementById('js-newGameElement'),
     pickElem = document.getElementById('js-playerPickElement'),
-    resultsElem = document.getElementById('js-resultsTableElement');
+    resultsElem = document.getElementById('js-resultsTableElement'),
+    gameWinner = document.getElementById('js-gameWinner');
+
 
 // statusy gry //
 
@@ -43,15 +45,18 @@ function setGameElements() {
         newGameElem.style.display = 'none';
         pickElem.style.display = 'block';
         resultsElem.style.display = 'block';
+        gameWinner.style.display = 'none';
       break;
     case 'ended':
         newGameBtn.innerText = 'Jeszcze raz';
+        gameWinner.style.display = 'block';
       break;
     case 'notStarted':
     default:
         newGameElem.style.display = 'block';
         pickElem.style.display = 'none';
         resultsElem.style.display = 'none';
+        gameWinner.style.display = 'none';
   }
 }
 
@@ -137,4 +142,18 @@ function checkRoundWinner(playerPick, computerPick) {
 function setGamePoints() {
     playerPointsElem.innerHTML = player.score;
     computerPointsElem.innerHTML = computer.score;
+}
+
+
+function checkGameWinner (){
+
+    if (player.score == 10) {
+      setGameElements('ended');
+      gameWinner.innerHTML = 'player.name';
+
+    } else if (computer.score == 10) {
+      setGameElements('ended');
+      gameWinner.innerHTML = 'KOMPUTER';
+    }
+
 }
