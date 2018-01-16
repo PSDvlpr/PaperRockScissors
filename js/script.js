@@ -48,8 +48,11 @@ function setGameElements() {
         gameWinner.style.display = 'none';
       break;
     case 'ended':
+        newGameElem.style.display = 'block';
         newGameBtn.innerText = 'Jeszcze raz';
         gameWinner.style.display = 'block';
+        resultsElem.style.display = 'none';
+        pickElem.style.display = 'none';
       break;
     case 'notStarted':
     default:
@@ -110,6 +113,8 @@ function playerPick(playerPick) {
   checkRoundWinner (playerPick, computerPick);
 
   setGamePoints();
+
+
 }
 
 // logika gry
@@ -136,24 +141,27 @@ function checkRoundWinner(playerPick, computerPick) {
         computerResultElem.innerHTML = "Win!";
         computer.score++;
     }
-
+    setGamePoints();
+    checkGameWinner ();
 }
 
 function setGamePoints() {
     playerPointsElem.innerHTML = player.score;
     computerPointsElem.innerHTML = computer.score;
+
 }
 
 
 function checkGameWinner (){
 
     if (player.score == 10) {
-      setGameElements('ended');
-      gameWinner.innerHTML = 'player.name';
+      gameState = 'ended';
+      setGameElements();
+      gameWinner.innerHTML = "Gratulacje! " + player.name + " wygrywa!";
 
     } else if (computer.score == 10) {
-      setGameElements('ended');
+      gameState = 'ended';
+      setGameElements();
       gameWinner.innerHTML = 'KOMPUTER';
     }
-
 }
