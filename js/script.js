@@ -162,6 +162,6 @@ function checkGameWinner (){
     } else if (computer.score == 10) {
       gameState = 'ended';
       setGameElements();
-      gameWinner.innerHTML = 'KOMPUTER';
+      gameWinner.innerHTML = "Niestety, tym razem wygrywa maszyna" ;
     }
 }
