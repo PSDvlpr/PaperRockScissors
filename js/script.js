@@ -46,6 +46,8 @@ function setGameElements() {
         pickElem.style.display = 'block';
         resultsElem.style.display = 'block';
         gameWinner.style.display = 'none';
+        playerPointsElem.innerHTML = 0;
+        computerPointsElem.innerHTML = 0;
       break;
     case 'ended':
         newGameElem.style.display = 'block';
@@ -60,10 +62,11 @@ function setGameElements() {
         pickElem.style.display = 'none';
         resultsElem.style.display = 'none';
         gameWinner.style.display = 'none';
+
   }
 }
 
-setGameElements('notStarted');
+setGameElements();
 
 // rozpoczęcie gry //
 
@@ -74,20 +77,15 @@ var playerPointsElem = document.getElementById('js-playerPoints'),
 function newGame() {
   player.name = prompt('Wprowadź imię', 'imię gracza');
   if (player.name) {
+
     player.score = computer.score = 0;
     gameState = 'started';
     setGameElements();
 
     playerNameElem.innerHTML = player.name;
-
     }
 }
 
-// wybór gracza //
-
-function playerPick(playerPick) {
-  console.log(playerPick);
-}
 
 
 // wybór komputera //
@@ -150,7 +148,6 @@ function setGamePoints() {
     computerPointsElem.innerHTML = computer.score;
 
 }
-
 
 function checkGameWinner (){
 
