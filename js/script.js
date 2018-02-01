@@ -46,8 +46,6 @@ function setGameElements() {
         pickElem.style.display = 'block';
         resultsElem.style.display = 'block';
         gameWinner.style.display = 'none';
-        playerPointsElem.innerHTML = 0;
-        computerPointsElem.innerHTML = 0;
       break;
     case 'ended':
         newGameElem.style.display = 'block';
@@ -74,16 +72,21 @@ var playerPointsElem = document.getElementById('js-playerPoints'),
     playerNameElem = document.getElementById('js-playerName'),
     computerPointsElem = document.getElementById('js-computerPoints');
 
+    setGameElements();
+
 function newGame() {
   player.name = prompt('Wprowadź imię', 'imię gracza');
-  if (player.name) {
+  clear();
 
+  if (player.name) {
     player.score = computer.score = 0;
+
     gameState = 'started';
     setGameElements();
 
     playerNameElem.innerHTML = player.name;
     }
+
 }
 
 
@@ -111,8 +114,6 @@ function playerPick(playerPick) {
   checkRoundWinner (playerPick, computerPick);
 
   setGamePoints();
-
-
 }
 
 // logika gry
@@ -146,7 +147,6 @@ function checkRoundWinner(playerPick, computerPick) {
 function setGamePoints() {
     playerPointsElem.innerHTML = player.score;
     computerPointsElem.innerHTML = computer.score;
-
 }
 
 function checkGameWinner (){
@@ -161,4 +161,14 @@ function checkGameWinner (){
       setGameElements();
       gameWinner.innerHTML = "Niestety, tym razem wygrywa maszyna" ;
     }
+}
+
+
+function clear() {
+  playerPointsElem.innerHTML = 0;
+  computerPointsElem.innerHTML = 0;
+  playerPickElem.innerHTML = "Player selection";
+  computerPickElem.innerHTML = "Computer selection";
+  playerResultElem.innerHTML = "Player score";
+  computerResultElem.innerHTML = "Computer score";
 }
